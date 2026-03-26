@@ -1,25 +1,23 @@
-
 [app]
 title = Dino Quest
 package.name = dinoquest
 package.domain = org.test
 source.dir = .
-source.include_exts = py,png,jpg,kv,atlas,wav,mp3,ogg
-version = 0.1
-requirements = requirements = python3,kivy==2.3.0,pillow,android
+source.include_exts = py,png,jpg,kv,atlas,wav,ogg
+version = 1.2
+requirements = python3,kivy==2.3.0,pillow,android,certifi
 
 orientation = landscape
-osx.python_version = 3
-osx.kivy_version = 1.9.1
 fullscreen = 1
 android.archs = arm64-v8a
+android.api = 34
+android.minapi = 24
+android.sdk = 34
+android.ndk = 25c
+android.accept_sdk_license = True
 android.allow_backup = True
-android.api = 31
-android.minapi = 21
-android.sdk = 31
-android.ndk = 25b
 android.private_storage = True
 
 [buildozer]
 log_level = 2
-warn_on_root = 1
+warn_on_root = 0
