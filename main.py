@@ -1,5 +1,4 @@
-
-            from kivy.app import App
+from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.floatlayout import FloatLayout
 from kivy.core.window import Window
@@ -16,22 +15,22 @@ class DinoQuestApp(App):
         tap_screen.bind(on_press=self.jump)
         layout.add_widget(tap_screen)
 
-        # The "Dinosaur" - A Yellow Box that CANNOT fail to load
+        # The Dinosaur - A Yellow Box that cannot fail
         self.dino = Button(
             text="[b]DINO[/b]",
             markup=True,
-            color=(0, 0, 0, 1), # Black text
+            color=(0, 0, 0, 1),
             background_normal='',
-            background_color=(1, 0.8, 0, 1), # Bright Yellow Box
-            size_hint=(0.2, 0.2), 
-            pos_hint={'center_x': 0.5, 'center_y': 0.2} # Starts near the bottom
+            background_color=(1, 0.8, 0, 1),
+            size_hint=(0.2, 0.1), 
+            pos_hint={'center_x': 0.5, 'center_y': 0.2}
         )
         layout.add_widget(self.dino)
         
         return layout
 
     def jump(self, instance):
-        # When you tap, the Yellow Box goes up, then comes back down
+        # Animation: Up then Down
         anim = Animation(pos_hint={'center_x': 0.5, 'center_y': 0.6}, duration=0.3) + \
                Animation(pos_hint={'center_x': 0.5, 'center_y': 0.2}, duration=0.3)
         anim.start(self.dino)
