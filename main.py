@@ -1,49 +1,27 @@
+
 import os
 from kivy.app import App
+from kivy.uix.label import Label
 from kivy.uix.image import Image
+from kivy.uix.floatlayout import FloatLayout
 from kivy.utils import platform
-
-# --- AUTOMATIC FILE FINDER ---
-# This helper finds your images even if the letters are wrong
-def get_asset(filename):
-    if platform == 'android':
-        # On Android, we just return the name and hope the requirements fixed it
-        return filename.lower()
-    return filename
 
 class DinoQuestApp(App):
     def build(self):
-        # We use a simple image first to make sure it opens!
-        # REPLACE 'dino.png' with your actual background or player name
+        layout = FloatLayout()
+        
+        # This is the "Safety Net"
+        # It tries to load your image, but won't crash if it fails
         try:
-            return Image(source=get_asset('dino.png'))
-        except:
-            from kivy.uix.label import Label
-            return Label(text="Game Started! (Image Missing)")
-
-if __name__ == '__main__':
-    DinoQuestApp().run()import os
-from kivy.app import App
-from kivy.uix.image import Image
-from kivy.utils import platform
-
-# --- AUTOMATIC FILE FINDER ---
-# This helper finds your images even if the letters are wrong
-def get_asset(filename):
-    if platform == 'android':
-        # On Android, we just return the name and hope the requirements fixed it
-        return filename.lower()
-    return filename
-
-class DinoQuestApp(App):
-    def build(self):
-        # We use a simple image first to make sure it opens!
-        # REPLACE 'dino.png' with your actual background or player name
-        try:
-            return Image(source=get_asset('dino.png'))
-        except:
-            from kivy.uix.label import Label
-            return Label(text="Game Started! (Image Missing)")
+            # IMPORTANT: Ensure your file is named 'dino.png' (all lowercase) in GitHub
+            img = Image(source='dino.png', allow_stretch=True, keep_ratio=True)
+            layout.add_widget(img)
+        except Exception as e:
+            # If the image fails, this shows text so the app stays open
+            error_label = Label(text="Dino Quest Started!\n(Check image filenames)", halign="center")
+            layout.add_widget(error_label)
+            
+        return layout
 
 if __name__ == '__main__':
     DinoQuestApp().run()
