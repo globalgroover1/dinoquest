@@ -4,9 +4,9 @@ title = Dino Quest
 package.name = dinoquest
 package.domain = org.test
 source.dir = .
-source.include_exts = py,png,jpg,kv,atlas
+source.include_exts = py,png,jpg,kv,atlas,wav,mp3,ogg
 version = 0.1
-requirements = python3,kivy
+requirements = requirements = python3,kivy==2.3.0,pillow,android
 
 orientation = landscape
 osx.python_version = 3
