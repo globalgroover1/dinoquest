@@ -1,25 +1,28 @@
-
 from kivy.app import App
+from kivy.uix.image import Image
+from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
-from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
 
 class DinoQuestApp(App):
     def build(self):
-        # This forces the background to be DARK GRAY instead of white
-        Window.clearcolor = (0.2, 0.2, 0.2, 1) 
+        # Sky Blue Background
+        Window.clearcolor = (0.5, 0.8, 1, 1) 
         
-        layout = BoxLayout(orientation='vertical')
+        layout = FloatLayout()
         
-        # This big label will tell us if the app is working
-        label = Label(
-            text="[b]DINO QUEST IS ALIVE![/b]\n\nIf you see this, the app works.\nWaiting for Dinosaur...",
-            markup=True,
-            font_size='24sp',
-            halign='center'
-        )
-        
-        layout.add_widget(label)
+        try:
+            # This looks for your file named 'dino.png'
+            dino = Image(
+                source='dino.png', 
+                size_hint=(0.5, 0.5), 
+                pos_hint={'center_x': 0.5, 'center_y': 0.5}
+            )
+            layout.add_widget(dino)
+        except:
+            # If the image fails, it shows this text instead of crashing
+            layout.add_widget(Label(text="App works, but dino.png not found!"))
+            
         return layout
 
 if __name__ == '__main__':
